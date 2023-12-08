@@ -141,7 +141,7 @@ public class PrincipalApp {
 	}
 	
   public static void obtenerFallos(String alumnos[][]) {
-    int cont0 = 0, aux = 0, col = 0;
+    int cont0 = 0, aux = 0;
     int fallos [] = new int [10];
     for (int i = 1; i < alumnos[0].length; i++) {
       for (int j = 0; j < alumnos.length; j++) {
@@ -152,7 +152,6 @@ public class PrincipalApp {
       fallos[i-1] = cont0;
       if (cont0 > aux) {
           aux = cont0;
-          col = i;
         }
       cont0 = 0;
     }
@@ -166,7 +165,7 @@ public class PrincipalApp {
   }
 
   public static void obtenerAciertos(String alumnos[][]) {
-    int cont1 = 0, aux = 0, col = 0;
+    int cont1 = 0, aux = 0;
     int [] aciertos = new int [10];
     for (int i = 1; i < alumnos[0].length; i++) {
       for (int j = 0; j < alumnos.length; j++) {
@@ -177,7 +176,6 @@ public class PrincipalApp {
       aciertos[i-1] = cont1;
       if (cont1 > aux) {
           aux = cont1;
-          col = i;
         }
       cont1 = 0;
     }
