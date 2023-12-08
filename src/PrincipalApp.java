@@ -253,7 +253,7 @@ public class PrincipalApp {
 		}
 
 	}
-<<<<<<< Updated upstream
+
 	public static void eliminarAlumno (String alumnos [][]) {
 		int option;
 
@@ -276,12 +276,11 @@ public class PrincipalApp {
 		}
 		System.out.println("El alumno " + alumnos[option][0] + " ha sido ELIMINADO exitosamente");
 	}
-	
-=======
+
 	
 	public static void crearAlumno(String [][] alumnos) {
 		boolean disponible = false;
-		int fila;
+		int fila = 0;
 		
 		for(int i = 0; i < alumnos.length; i++) {
 			if(alumnos[i][0].equalsIgnoreCase("")) {
@@ -309,6 +308,6 @@ public class PrincipalApp {
 		} else {
 			System.out.println("[Error] Todos los campos están llenos, no se puede crear ningun alumno más");
 		}
+	}	
 
->>>>>>> Stashed changes
 } // fin main
