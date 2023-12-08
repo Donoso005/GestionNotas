@@ -28,8 +28,8 @@ public class PrincipalApp {
             obtenerNota(alumnos);
             break;
           case 3:
-        	  obtenerMedia(alumnos);
-        	  break;
+            obtenerMedia(alumnos);
+            break;
           case 4:
             obtenerFallos(alumnos);
             break;
@@ -51,6 +51,7 @@ public class PrincipalApp {
       }
       System.out.print("¿Desea volver a hacer otra consulta? (SI/NO): ");
       repetir = sc.next();
+      System.out.println("\n");
     } while (
       (repetir.equalsIgnoreCase("SI") && !repetir.equalsIgnoreCase("NO")) ||
       !repetir.equalsIgnoreCase("NO")
@@ -108,18 +109,22 @@ public class PrincipalApp {
   }
 
   public static void obtenerNota(String alumnos[][]) {
-    String nombre;
-    int nota = 0;
-    System.out.println("Introduce el nombre del alumno para saber su nota: ");
-    nombre = sc.next();
-    for (int i = 0; i < alumnos.length; i++) {
-      if (nombre.equalsIgnoreCase(alumnos[i][0])) {
-        for (int j = 1; j < alumnos[0].length; j++) {
-          nota = nota + Integer.parseInt(alumnos[i][j]);
-        }
+    int nota = 0, option;
+
+    do {
+      for (int i = 0; i < alumnos.length; i++) {
+        System.out.println((i + 1) + ". " + alumnos[i][0]);
       }
+
+      System.out.print("Selecciona un alumno para saber su nota: ");
+      option = sc.nextInt();
+    } while (option < 1 || option > (alumnos.length + 1));
+    option--;
+
+    for (int j = 1; j < alumnos[0].length; j++) {
+      nota = nota + Integer.parseInt(alumnos[option][j]);
     }
-    System.out.println("Nota de " + nombre + ": " + nota);
+    System.out.println("Nota de " + alumnos[option][0] + ": " + nota);
   }
 
   public static void obtenerMedia(String alumnos[][]) {
