@@ -253,6 +253,7 @@ public class PrincipalApp {
 		}
 
 	}
+<<<<<<< Updated upstream
 	public static void eliminarAlumno (String alumnos [][]) {
 		int option;
 
@@ -276,4 +277,38 @@ public class PrincipalApp {
 		System.out.println("El alumno " + alumnos[option][0] + " ha sido ELIMINADO exitosamente");
 	}
 	
+=======
+	
+	public static void crearAlumno(String [][] alumnos) {
+		boolean disponible = false;
+		int fila;
+		
+		for(int i = 0; i < alumnos.length; i++) {
+			if(alumnos[i][0].equalsIgnoreCase("")) {
+				disponible = true;
+				fila = i;
+			}
+		}
+		
+		if(disponible) {
+			System.out.print("Introduzca el nombre del alumno: ");
+			alumnos[fila][0] = sc.next();
+			
+			for (int j = 1; j < alumnos[0].length; j++) {
+				do {
+
+					if (!(Integer.parseInt(alumnos[fila][j]) == 1) && !(Integer.parseInt(alumnos[fila][j]) == 0)) {
+						System.out.println("[Error] El valor debe ser comprendido entre 0 y 1");
+					}
+
+					System.out.print(
+							"Introduce el nuevo valor de la " + j + "º pregunta: ");
+					alumnos[fila][j] = sc.next();
+				} while (!(Integer.parseInt(alumnos[fila][j]) == 1) && !(Integer.parseInt(alumnos[fila][j]) == 0));
+			}
+		} else {
+			System.out.println("[Error] Todos los campos están llenos, no se puede crear ningun alumno más");
+		}
+
+>>>>>>> Stashed changes
 } // fin main
