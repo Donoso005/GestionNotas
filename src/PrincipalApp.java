@@ -69,7 +69,7 @@ public class PrincipalApp {
 		String nombre;
 		int nota=0;
 		System.out.println("Introduce el nombre del alumno para saber su nota: ");
-		nombre = sc.nextLine();
+		nombre = sc.next();
 		for (int i=0;i<alumnos.length;i++) {
 			if (nombre.equalsIgnoreCase(alumnos[i][0])) {
 				for (int j=1;j<alumnos[0].length;j++) {
@@ -109,7 +109,6 @@ public class PrincipalApp {
 		System.out.println("El Ejercicio con más FALLOS es el " + col);
 	}
 	
-	
 	public static void obtenerAciertos (String alumnos[][]) {
 		int cont1=0, aux=0, col=0;
 		for(int i=1;i<alumnos[0].length;i++) {
@@ -125,6 +124,42 @@ public class PrincipalApp {
 			
 		}
 		System.out.println("El Ejercicio con más FALLOS es el " + col);
+	}
+	
+	public static void modificarAlumno (String alumnos [][]) {
+		String  nomAlumno;
+		System.out.println("¿Qué alumno quieres modificar?");
+		
+	}
+	
+	public static void notaBaja (String alumnos [][]) {
+		int fila=0, acumulador = 0, aux = 90;
+		for(int i=0;i<alumnos.length;i++) {
+			for (int j=1;j<alumnos[i].length;j++) {
+				acumulador = acumulador + Integer.parseInt(alumnos[i][j]);
+			}
+			if (acumulador<aux) {
+				aux = acumulador;
+				fila = i;
+			}
+			acumulador = 0;
+		}
+		System.out.println("El alumno con la nota más BAJA, un " + aux + ", es " + alumnos[fila][0]);
+	}
+	
+	public static void notaAlta (String alumnos [][]) {
+		int fila=0, acumulador = 0, aux = 0;
+		for(int i=0;i<alumnos.length;i++) {
+			for (int j=1;j<alumnos[i].length;j++) {
+				acumulador = acumulador + Integer.parseInt(alumnos[i][j]);
+			}
+			if (acumulador>aux) {
+				aux = acumulador;
+				fila = i;
+			}
+			acumulador = 0;
+		}
+		System.out.println("El alumno con la nota más ALTA, un " + aux + ", es " + alumnos[fila][0]);
 	}
 	
 }//fin main
