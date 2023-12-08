@@ -68,7 +68,9 @@ public class PrincipalApp {
 			System.out.println("6. Obtener el alumno con nota más baja");
 			System.out.println("7. Obtener el alumno con nota más alta");
 			System.out.println("8. Corregir respuesta de alumno");
+			System.out.print("Introduzca el número de la opcion: ");
 			option = sc.nextInt();
+			System.out.print("\n");
 			if (option < 1 || option > 8) {
 				System.out.println("[ERROR] Opción incorrecta...");
 			}
