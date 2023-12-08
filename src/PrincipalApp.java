@@ -50,14 +50,11 @@ public class PrincipalApp {
 					case 10:
 						crearAlumno(alumnos);
 						break;
-<<<<<<< HEAD
-					case 12:
-						comprobarActividades(alumnos);
-=======
 					case 11:
 						aprobadosSuspensos(alumnos);
->>>>>>> eecc1c31243929ff98bf26b10d8cbd55f0f51ff9
 						break;
+					case 12:
+						comprobarActividades(alumnos);		
 				}
 			} else {
 				System.out.println("[ERROR] Opción incorrecta...");
@@ -84,7 +81,6 @@ public class PrincipalApp {
 			System.out.println("8. Corregir respuesta de alumno");
 			System.out.println("9. Eliminar Alumno");
 			System.out.println("10. Crear Alumno");
-<<<<<<< HEAD
 			System.out.println("11. Mostrar alumnos aprobados y suspensos");
 			System.out.println("12. Comprobar y agregar nota extra por actividades");
 			System.out.print("Introduzca el número de la opcion: ");
@@ -94,16 +90,6 @@ public class PrincipalApp {
 				System.out.println("[ERROR] Opción incorrecta...");
 			}
 		} while (option < 1 || option > 12);
-=======
-			System.out.println("11. Ver Aprobados y Suspensos");
-			System.out.print("Introduzca el número de la opcion: ");
-			option = sc.nextInt();
-			System.out.print("\n");
-			if (option < 1 || option > 11) {
-				System.out.println("[ERROR] Opción incorrecta...");
-			}
-		} while (option < 1 || option > 11);
->>>>>>> eecc1c31243929ff98bf26b10d8cbd55f0f51ff9
 
 		return option;
 	}
