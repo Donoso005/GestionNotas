@@ -28,18 +28,21 @@ public class PrincipalApp {
             obtenerNota(alumnos);
             break;
           case 3:
+        	  obtenerMedia(alumnos);
+        	  break;
+          case 4:
             obtenerFallos(alumnos);
             break;
-          case 4:
+          case 5:
             obtenerAciertos(alumnos);
             break;
-          case 5:
+          case 6:
             notaBaja(alumnos);
             break;
-          case 6:
+          case 7:
             notaAlta(alumnos);
             break;
-          case 7:
+          case 8:
             corregirRespuestas(alumnos);
             break;
         }
@@ -60,17 +63,18 @@ public class PrincipalApp {
     do {
       System.out.println("----- Menú Principal -----");
       System.out.println("1. Obtener todos los alumnos y notas");
-      System.out.println("2. Obtener la nota media de clase");
-      System.out.println("3. Obtener la pregunta con más fallos");
-      System.out.println("4. Obtener la pregunta con más aciertos");
-      System.out.println("5. Obtener el alumno con nota más baja");
-      System.out.println("6. Obtener el alumno con nota más alta");
-      System.out.println("7. Corregir respuesta de alumno");
+      System.out.println("2. Obtener nota de un alumno");
+      System.out.println("3. Obtener la nota media de clase");
+      System.out.println("4. Obtener la pregunta con más fallos");
+      System.out.println("5. Obtener la pregunta con más aciertos");
+      System.out.println("6. Obtener el alumno con nota más baja");
+      System.out.println("7. Obtener el alumno con nota más alta");
+      System.out.println("8. Corregir respuesta de alumno");
       option = sc.nextInt();
-      if (option < 1 || option > 6) {
+      if (option < 1 || option > 8) {
         System.out.println("[ERROR] Opción incorrecta...");
       }
-    } while (option < 1 || option > 6);
+    } while (option < 1 || option > 8);
 
     return option;
   }
