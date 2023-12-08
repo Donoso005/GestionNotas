@@ -4,6 +4,7 @@ public class PrincipalApp {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		String repetir = "SI";
 		String [][] alumnos;
 		int numAlumnos, option;
 		
@@ -13,12 +14,36 @@ public class PrincipalApp {
 		
 		rellenarAlumnos(alumnos);
 		
-		option = menu();
-		switch(option) {
-			case 1:
-				getAlumnos(alumnos);
-				break;
-		}
+		do {
+			if(repetir.equalsIgnoreCase("SI")) {
+				option = menu();
+					switch(option) {
+						case 1:
+							getAlumnos(alumnos);
+							break;
+						case 2:
+							obtenerNota(alumnos);
+							break;
+						case 3:
+							obtenerFallos(alumnos);
+							break;
+						case 4:
+							obtenerAciertos(alumnos);
+							break;
+						case 5:
+							notaBaja(alumnos);
+							break;
+						case 6:
+							notaAlta(alumnos);
+							break;
+					}
+				} else {
+					System.out.println("[ERROR] Opción incorrecta...");
+				}
+			System.out.print("¿Desea volver a hacer otra consulta? (SI/NO): ");
+			repetir = sc.next();
+			
+		} while((repetir.equalsIgnoreCase("SI") && !repetir.equalsIgnoreCase("NO")) || !repetir.equalsIgnoreCase("NO"));
 		
 
 	}//fin class
@@ -29,14 +54,20 @@ public class PrincipalApp {
 		do {
 			System.out.println("----- Menú Principal -----");
 			System.out.println("1. Obtener todos los alumnos y notas");
+			System.out.println("2. Obtener la nota media de clase");
+			System.out.println("3. Obtener la pregunta con más fallos");
+			System.out.println("4. Obtener la pregunta con más aciertos");
+			System.out.println("5. Obtener el alumno con nota más baja");
+			System.out.println("6. Obtener el alumno con nota más alta");
 			option = sc.nextInt();
-			if(option < 1 || option > 1) {
+			if(option < 1 || option > 6) {
 				System.out.println("[ERROR] Opción incorrecta...");
 			}
-		}while(option < 1 || option > 1);
+		}while(option < 1 || option > 6);
 		
 		return option;
 	}
+
 	public static void getAlumnos(String [][] alumnos) {
 		for(int i = 0; i < alumnos.length; i++) {
 			System.out.print("[");
