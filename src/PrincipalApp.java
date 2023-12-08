@@ -50,6 +50,9 @@ public class PrincipalApp {
 					case 10:
 						crearAlumno(alumnos);
 						break;
+					case 12:
+						comprobarActividades(alumnos);
+						break;
 				}
 			} else {
 				System.out.println("[ERROR] Opción incorrecta...");
@@ -76,13 +79,15 @@ public class PrincipalApp {
 			System.out.println("8. Corregir respuesta de alumno");
 			System.out.println("9. Eliminar Alumno");
 			System.out.println("10. Crear Alumno");
+			System.out.println("11. Mostrar alumnos aprobados y suspensos");
+			System.out.println("12. Comprobar y agregar nota extra por actividades");
 			System.out.print("Introduzca el número de la opcion: ");
 			option = sc.nextInt();
 			System.out.print("\n");
-			if (option < 1 || option > 10) {
+			if (option < 1 || option > 12) {
 				System.out.println("[ERROR] Opción incorrecta...");
 			}
-		} while (option < 1 || option > 10);
+		} while (option < 1 || option > 12);
 
 		return option;
 	}
@@ -317,6 +322,55 @@ public class PrincipalApp {
 		} else {
 			System.out.println("[Error] Todos los campos están llenos, no se puede crear ningun alumno más");
 		}
-	}	
+	}
+	
+	public static void comprobarActividades(String [][] alumnos) {
+		int [] actividades = new int[alumnos.length];
+		String aplicarNota;
+		int auxVar = 1;
+		boolean tieneCero = false;
+		for(int i = 0; i < actividades.length; i++) {
+			actividades[i] = (int)(0 + Math.random() * 2);
+		}
+		
+		System.out.println("Estos son los alumnos que han hecho las actividades: ");
+		for(int i = 0; i < alumnos.length; i++) {
+			System.out.println((i + 1) + ". " + alumnos[i][0] + ": " + (actividades[i] == 1));
+		}
+		
+		do {
+			System.out.println("Actividades hechas = +1 punto");
+			System.out.println("Actividades no hechas = -1 punto");
+			System.out.print("¿Desea aplicar la penalización/bonificacion a la nota de cada alumno? (SI/NO): ");
+			aplicarNota = sc.next();
+			if (aplicarNota.equalsIgnoreCase("SI")) {
+				for(int i = 0; i < alumnos.length; i++) {
+					if(actividades[i] == 1) {
+						do {
+							if(Integer.parseInt(alumnos[i][auxVar]) == 0) {
+								tieneCero = true;
+								alumnos[i][auxVar] = String.valueOf(1);
+							}
+							auxVar++;
+						}while(!tieneCero && auxVar < alumnos.length);
+					} else {
+						do {
+							if(Integer.parseInt(alumnos[i][auxVar]) == 1) {
+								tieneCero = true;
+								alumnos[i][auxVar] = String.valueOf(0);
+							}
+							auxVar++;
+						}while(!tieneCero && auxVar < alumnos.length);
+					}
+					auxVar = 1;
+				}
+				System.out.println("[EXITO] Se han aplicado las penalizaciones y bonificaciones de las actividades correctamente.");
+			}
+			if((!aplicarNota.equalsIgnoreCase("SI") && !aplicarNota.equalsIgnoreCase("NO"))){
+				System.out.println("[ERROR] Opción incorrecta...");
+			}
+			System.out.println("\n");
+		} while ((!aplicarNota.equalsIgnoreCase("SI") && !aplicarNota.equalsIgnoreCase("NO")));
+	}
 
 } // fin main
