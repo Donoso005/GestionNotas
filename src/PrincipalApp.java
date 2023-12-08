@@ -44,6 +44,12 @@ public class PrincipalApp {
 					case 8:
 						corregirRespuestas(alumnos);
 						break;
+					case 9:
+						eliminarAlumno(alumnos);
+						break;
+					case 10:
+						crearAlumno(alumnos);
+						break;
 				}
 			} else {
 				System.out.println("[ERROR] Opción incorrecta...");
@@ -68,13 +74,15 @@ public class PrincipalApp {
 			System.out.println("6. Obtener el alumno con nota más baja");
 			System.out.println("7. Obtener el alumno con nota más alta");
 			System.out.println("8. Corregir respuesta de alumno");
+			System.out.println("9. Eliminar Alumno");
+			System.out.println("10. Crear Alumno");
 			System.out.print("Introduzca el número de la opcion: ");
 			option = sc.nextInt();
 			System.out.print("\n");
-			if (option < 1 || option > 8) {
+			if (option < 1 || option > 10) {
 				System.out.println("[ERROR] Opción incorrecta...");
 			}
-		} while (option < 1 || option > 8);
+		} while (option < 1 || option > 10);
 
 		return option;
 	}
@@ -296,15 +304,16 @@ public class PrincipalApp {
 			for (int j = 1; j < alumnos[0].length; j++) {
 				do {
 
-					if (!(Integer.parseInt(alumnos[fila][j]) == 1) && !(Integer.parseInt(alumnos[fila][j]) == 0)) {
-						System.out.println("[Error] El valor debe ser comprendido entre 0 y 1");
-					}
-
 					System.out.print(
 							"Introduce el nuevo valor de la " + j + "º pregunta: ");
 					alumnos[fila][j] = sc.next();
+					
+					if (!(Integer.parseInt(alumnos[fila][j]) == 1) && !(Integer.parseInt(alumnos[fila][j]) == 0)) {
+						System.out.println("[Error] El valor debe ser comprendido entre 0 y 1");
+					}
 				} while (!(Integer.parseInt(alumnos[fila][j]) == 1) && !(Integer.parseInt(alumnos[fila][j]) == 0));
 			}
+			System.out.println("[EXITO] Se ha creado el alumno " + alumnos[fila][0] + " correctamente.");
 		} else {
 			System.out.println("[Error] Todos los campos están llenos, no se puede crear ningun alumno más");
 		}
