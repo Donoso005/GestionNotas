@@ -112,13 +112,14 @@ public class PrincipalApp {
     int nota = 0, option;
 
     do {
+      System.out.println("--------------------");
       for (int i = 0; i < alumnos.length; i++) {
         System.out.println((i + 1) + ". " + alumnos[i][0]);
       }
-
+      System.out.println("--------------------\n");
       System.out.print("Selecciona un alumno para saber su nota: ");
       option = sc.nextInt();
-    } while (option < 1 || option > (alumnos.length + 1));
+    } while (option < 1 || option > alumnos.length);
     option--;
 
     for (int j = 1; j < alumnos[0].length; j++) {
