@@ -364,6 +364,7 @@ public class PrincipalApp {
                         } while (!tieneCero && auxVar < alumnos.length);
                     }
                     auxVar = 1;
+                    tieneCero = false;
                 }
                 System.out.println(
                         "[EXITO] Se han aplicado las penalizaciones y bonificaciones de las actividades correctamente.");
