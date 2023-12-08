@@ -36,6 +36,9 @@ public class PrincipalApp {
 						case 6:
 							notaAlta(alumnos);
 							break;
+						case 7:
+							corregirRespuestas(alumnos);
+							break;
 					}
 				} else {
 					System.out.println("[ERROR] Opción incorrecta...");
@@ -59,6 +62,7 @@ public class PrincipalApp {
 			System.out.println("4. Obtener la pregunta con más aciertos");
 			System.out.println("5. Obtener el alumno con nota más baja");
 			System.out.println("6. Obtener el alumno con nota más alta");
+			System.out.println("7. Corregir respuesta de alumno");
 			option = sc.nextInt();
 			if(option < 1 || option > 6) {
 				System.out.println("[ERROR] Opción incorrecta...");
