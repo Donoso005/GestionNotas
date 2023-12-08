@@ -157,12 +157,6 @@ public class PrincipalApp {
 		System.out.println("El Ejercicio con más FALLOS es el " + col);
 	}
 	
-	public static void modificarAlumno (String alumnos [][]) {
-		String  nomAlumno;
-		System.out.println("¿Qué alumno quieres modificar?");
-		
-	}
-	
 	public static void notaBaja (String alumnos [][]) {
 		int fila=0, acumulador = 0, aux = 90;
 		for(int i=0;i<alumnos.length;i++) {
