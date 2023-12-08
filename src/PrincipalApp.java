@@ -145,7 +145,7 @@ public class PrincipalApp {
         aux = cont0;
         col = i;
       }
-      for (int j = 1; j < alumnos.length; j++) {
+      for (int j = 0; j < alumnos.length; j++) {
         if (alumnos[j][i].equals("0")) {
           cont0++;
         }
@@ -161,13 +161,13 @@ public class PrincipalApp {
         aux = cont1;
         col = i;
       }
-      for (int j = 1; j < alumnos.length; j++) {
+      for (int j = 0; j < alumnos.length; j++) {
         if (alumnos[j][i].equals("1")) {
           cont1++;
         }
       }
     }
-    System.out.println("El Ejercicio con más FALLOS es el " + col);
+    System.out.println("El Ejercicio con más ACIERTOS es el " + col);
   }
 
   public static void notaBaja(String alumnos[][]) {
