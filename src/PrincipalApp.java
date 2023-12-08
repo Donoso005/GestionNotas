@@ -110,15 +110,19 @@ public class PrincipalApp {
 
   public static void obtenerNota(String alumnos[][]) {
     int nota = 0, option;
-
+    
+    System.out.println("--------------------");
+    for (int i = 0; i < alumnos.length; i++) {
+      System.out.println((i + 1) + ". " + alumnos[i][0]);
+    }
+    System.out.println("--------------------\n");
+    
     do {
-      System.out.println("--------------------");
-      for (int i = 0; i < alumnos.length; i++) {
-        System.out.println((i + 1) + ". " + alumnos[i][0]);
-      }
-      System.out.println("--------------------\n");
       System.out.print("Selecciona un alumno para saber su nota: ");
       option = sc.nextInt();
+      if(option < 1 || option > alumnos.length) {
+    	  System.out.println("[ERROR] Alumno no encontrado...");
+      }
     } while (option < 1 || option > alumnos.length);
     option--;
 
