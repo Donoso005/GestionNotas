@@ -116,14 +116,14 @@ public class PrincipalApp {
 	}
 	
 	
-	public static void obtenerMedia (String alumnos[][], int numAlumnos) {
+	public static void obtenerMedia (String alumnos[][]) {
 		int totalNotas=0;
 		for (int i=0;i<alumnos.length;i++) {
 			for (int j=1;j<alumnos[0].length;j++) {
 				totalNotas = totalNotas + Integer.parseInt(alumnos[i][j]);
 			}
 		}
-		System.out.println("Nota MEDIA de alumnos: " + totalNotas/numAlumnos);
+		System.out.println("Nota MEDIA de alumnos: " + totalNotas/alumnos.length);
 	}
 	
 	
