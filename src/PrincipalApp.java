@@ -139,55 +139,55 @@ public class PrincipalApp {
 		}
 		System.out.println("Nota MEDIA de alumnos: " + totalNotas / alumnos.length);
 	}
-	
-  public static void obtenerFallos(String alumnos[][]) {
-    int cont0 = 0, aux = 0;
-    int fallos [] = new int [10];
-    for (int i = 1; i < alumnos[0].length; i++) {
-      for (int j = 0; j < alumnos.length; j++) {
-        if (alumnos[j][i].equals("0")) {
-          cont0++;
-        }
-      }
-      fallos[i-1] = cont0;
-      if (cont0 > aux) {
-          aux = cont0;
-        }
-      cont0 = 0;
-    }
-    System.out.println("El/Los Ejercicio(s) con más FALLOS es/son: " );
-    for(int i=0;i<fallos.length;i++) {
-    	if(fallos[i]==aux) {
-    	System.out.println(" • Ejercicio " + (i+1));
-    	}
-    }
-    System.out.print("-- Con " + aux + " ❌FALLOS❌  \n"); 
-  }
 
-  public static void obtenerAciertos(String alumnos[][]) {
-    int cont1 = 0, aux = 0;
-    int [] aciertos = new int [10];
-    for (int i = 1; i < alumnos[0].length; i++) {
-      for (int j = 0; j < alumnos.length; j++) {
-        if (alumnos[j][i].equals("1")) {
-          cont1++;
-        }
-      }
-      aciertos[i-1] = cont1;
-      if (cont1 > aux) {
-          aux = cont1;
-        }
-      cont1 = 0;
-    }
-    
-    System.out.println("El/Los Ejercicio(s) con más ACIERTOS es/son: " );
-    for(int i=0;i<aciertos.length;i++) {
-    	if(aciertos[i]==aux) {
-    	System.out.println(" • Ejercicio " + (i+1));
-    	}
-    }
-    System.out.print("--- Con " + aux + " ✔️ACIERTOS✔️ \n");
-  } 
+	public static void obtenerFallos(String alumnos[][]) {
+		int cont0 = 0, aux = 0;
+		int fallos[] = new int[10];
+		for (int i = 1; i < alumnos[0].length; i++) {
+			for (int j = 0; j < alumnos.length; j++) {
+				if (alumnos[j][i].equals("0")) {
+					cont0++;
+				}
+			}
+			fallos[i - 1] = cont0;
+			if (cont0 > aux) {
+				aux = cont0;
+			}
+			cont0 = 0;
+		}
+		System.out.println("El/Los Ejercicio(s) con más FALLOS es/son: ");
+		for (int i = 0; i < fallos.length; i++) {
+			if (fallos[i] == aux) {
+				System.out.println(" • Ejercicio " + (i + 1));
+			}
+		}
+		System.out.print("-- Con " + aux + " ❌FALLOS❌  \n");
+	}
+
+	public static void obtenerAciertos(String alumnos[][]) {
+		int cont1 = 0, aux = 0;
+		int[] aciertos = new int[10];
+		for (int i = 1; i < alumnos[0].length; i++) {
+			for (int j = 0; j < alumnos.length; j++) {
+				if (alumnos[j][i].equals("1")) {
+					cont1++;
+				}
+			}
+			aciertos[i - 1] = cont1;
+			if (cont1 > aux) {
+				aux = cont1;
+			}
+			cont1 = 0;
+		}
+
+		System.out.println("El/Los Ejercicio(s) con más ACIERTOS es/son: ");
+		for (int i = 0; i < aciertos.length; i++) {
+			if (aciertos[i] == aux) {
+				System.out.println(" • Ejercicio " + (i + 1));
+			}
+		}
+		System.out.print("--- Con " + aux + " ✔️ACIERTOS✔️ \n");
+	}
 
 	public static void notaBaja(String alumnos[][]) {
 		int fila = 0, acumulador = 0, aux = 90;
