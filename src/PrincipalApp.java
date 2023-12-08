@@ -253,4 +253,27 @@ public class PrincipalApp {
 		}
 
 	}
+	public static void eliminarAlumno (String alumnos [][]) {
+		int option;
+
+		System.out.println("--------------------");
+		for (int i = 0; i < alumnos.length; i++) {
+			System.out.println((i + 1) + ". " + alumnos[i][0]);
+		}
+		System.out.println("--------------------\n");
+
+		do {
+			System.out.print("Selecciona un alumno para ELIMINARLO: ");
+			option = sc.nextInt();
+			if (option < 1 || option > alumnos.length) {
+				System.out.println("[ERROR] Alumno no encontrado...");
+			}
+		} while (option < 1 || option > alumnos.length);
+		option--;
+		for(int i=0;i<alumnos[0].length;i++){			
+			alumnos[option][i] = "";
+		}
+		System.out.println("El alumno " + alumnos[option][0] + " ha sido ELIMINADO exitosamente");
+	}
+	
 } // fin main
