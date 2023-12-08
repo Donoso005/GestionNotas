@@ -50,6 +50,9 @@ public class PrincipalApp {
 					case 10:
 						crearAlumno(alumnos);
 						break;
+					case 11:
+						aprobadosSuspensos(alumnos);
+						break;
 				}
 			} else {
 				System.out.println("[ERROR] Opción incorrecta...");
@@ -76,13 +79,14 @@ public class PrincipalApp {
 			System.out.println("8. Corregir respuesta de alumno");
 			System.out.println("9. Eliminar Alumno");
 			System.out.println("10. Crear Alumno");
+			System.out.println("11. Ver Aprobados y Suspensos");
 			System.out.print("Introduzca el número de la opcion: ");
 			option = sc.nextInt();
 			System.out.print("\n");
-			if (option < 1 || option > 10) {
+			if (option < 1 || option > 11) {
 				System.out.println("[ERROR] Opción incorrecta...");
 			}
-		} while (option < 1 || option > 10);
+		} while (option < 1 || option > 11);
 
 		return option;
 	}
@@ -319,4 +323,34 @@ public class PrincipalApp {
 		}
 	}	
 
+	public static void aprobadosSuspensos (String alumnos [][]) {
+		int cont=0;
+		String [] aprobados, suspensos;
+		aprobados = new String[alumnos.length];
+		suspensos = new String[alumnos.length];
+		
+		for(int i=0;i<alumnos.length;i++) {
+			for(int j=1;j<alumnos[0].length;j++) {
+				cont = cont + Integer.parseInt(alumnos[i][j]);
+			}
+			if(cont>4) {
+				aprobados[i] = alumnos[i][0];
+			}else {
+				suspensos[i] = alumnos[i][0];
+			}
+			cont = 0;
+		}
+		System.out.println("Alumnos APROBADOS: ");
+		for(int i=0;i<aprobados.length;i++) {
+			if(aprobados[i]!=null) {
+				System.out.println("• " + aprobados[i]);
+			}
+		}
+		System.out.println("Alumnos SUSPENSOS: ");
+		for(int i=0;i<suspensos.length;i++) {
+			if(suspensos[i]!=null) {
+				System.out.println("• " + suspensos[i]);
+			}
+		}
+	}
 } // fin main
