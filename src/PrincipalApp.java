@@ -193,4 +193,17 @@ public class PrincipalApp {
 		System.out.println("El alumno con la nota más ALTA, un " + aux + ", es " + alumnos[fila][0]);
 	}
 	
+	public static void corregirRespuestas (String alumnos [][]) {
+		String  nomAlumno;
+		System.out.println("¿Qué alumno quieres modificar?");
+		nomAlumno = sc.next();
+		for(int i=0;i<alumnos.length;i++) {
+			if (nomAlumno.equalsIgnoreCase(alumnos[i][0])){
+				for(int j=1;j<alumnos[i].length;j++) {
+					System.out.println("Introduce el nuevo valor de la " + j + "º pregunta");
+					alumnos[i][j] = sc.next();
+				}
+			}
+		}
+	}
 }//fin main
