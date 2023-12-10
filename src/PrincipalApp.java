@@ -55,6 +55,7 @@ public class PrincipalApp {
                         break;
                     case 11:
                     	ActividadesCheck = comprobarActividades(alumnos, ActividadesCheck);
+                    	break;
                     case 12:
                         aprobadosSuspensos(alumnos);
                         break;
@@ -267,7 +268,7 @@ public class PrincipalApp {
         System.out.println("--------------------\n");
 
         do {
-            System.out.print("Selecciona un alumno para saber su nota: ");
+            System.out.print("Selecciona un alumno para corregir sus respuestas: ");
             option = sc.nextInt();
             if (option < 1 || option > alumnos.length) {
                 System.out.println("[ERROR] Alumno no encontrado...");
