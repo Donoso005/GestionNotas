@@ -140,13 +140,10 @@ public class PrincipalApp {
             System.out.println((i + 1) + ". " + alumnos[i][0]);
         }
         System.out.println("--------------------\n");
-<<<<<<< Updated upstream
-        do { 
-=======
         
         // Select Alumno
         do {
->>>>>>> Stashed changes
+
             System.out.print("Selecciona un alumno para saber su nota: ");
             option = sc.nextInt();
             if (option < 1 || option > alumnos.length) {
@@ -351,12 +348,9 @@ public class PrincipalApp {
         }
     }
 
-<<<<<<< Updated upstream
     //Crea el vector actividades de manera aleatoria. Pregunta si aplicar las actividades y suma o resta a la primera respuesta posible.
-    public static void comprobarActividades(String[][] alumnos) {
-=======
     public static boolean comprobarActividades(String[][] alumnos, boolean actividadesCheck) {
->>>>>>> Stashed changes
+	
         int[] actividades = new int[alumnos.length];
         String aplicarNota;
         int auxVar = 1;
