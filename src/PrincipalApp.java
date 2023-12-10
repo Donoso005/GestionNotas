@@ -54,10 +54,10 @@ public class PrincipalApp {
                         crearAlumno(alumnos);
                         break;
                     case 11:
+                    	ActividadesCheck = comprobarActividades(alumnos, ActividadesCheck);
+                    case 12:
                         aprobadosSuspensos(alumnos);
                         break;
-                    case 12:
-                    	ActividadesCheck = comprobarActividades(alumnos, ActividadesCheck);
                 }
             } else {
                 System.out.println("[ERROR] Opción incorrecta...");
@@ -85,8 +85,8 @@ public class PrincipalApp {
             System.out.println("8. Corregir respuesta de alumno");
             System.out.println("9. Eliminar Alumno");
             System.out.println("10. Crear Alumno");
-            System.out.println("11. Mostrar alumnos aprobados y suspensos");
-            System.out.println("12. Comprobar y agregar nota extra por actividades");
+            System.out.println("11. Comprobar y agregar nota extra por actividades");
+            System.out.println("12. Mostrar alumnos aprobados y suspensos");
             System.out.print("Introduzca el número de la opcion: ");
             option = sc.nextInt();
             System.out.print("\n");
@@ -351,7 +351,7 @@ public class PrincipalApp {
     //Crea el vector actividades de manera aleatoria. Pregunta si aplicar las actividades y suma o resta a la primera respuesta posible.
     public static boolean comprobarActividades(String[][] alumnos, boolean actividadesCheck) {
 	
-        int[] actividades = new int[alumnos.length];
+        boolean[] actividades = new boolean[alumnos.length];
         String aplicarNota;
         int auxVar = 1;
         boolean tieneCero = false;
@@ -363,12 +363,12 @@ public class PrincipalApp {
         
         // Generate Actividades
         for (int i = 0; i < actividades.length; i++) {
-            actividades[i] = (int) (0 + Math.random() * 2);
+            actividades[i] = ((int) (0 + Math.random() * 2) == 1);
         }
         // Check Actividades
         System.out.println("Estos son los alumnos que han hecho las actividades: ");
         for (int i = 0; i < alumnos.length; i++) {
-            System.out.println((i + 1) + ". " + alumnos[i][0] + ": " + (actividades[i] == 1));
+            System.out.println((i + 1) + ". " + alumnos[i][0] + ": " + actividades[i]);
         }
         
         // Aplly the Punishment and Bonification
@@ -380,7 +380,7 @@ public class PrincipalApp {
             if (aplicarNota.equalsIgnoreCase("SI")) {
                 for (int i = 0; i < alumnos.length; i++) {
                 	// IF do Actividades
-                    if (actividades[i] == 1) {
+                    if (actividades[i]) {
                         do {
                         	// Check every column if 0
                             if (Integer.parseInt(alumnos[i][auxVar]) == 0) {
@@ -389,7 +389,7 @@ public class PrincipalApp {
                                 alumnos[i][auxVar] = String.valueOf(1);
                             }
                             auxVar++;
-                        } while (!tieneCero && auxVar < alumnos.length);
+                        } while (!tieneCero && auxVar < alumnos[0].length);
                     // ELSE
                     } else {
                         do {
@@ -400,7 +400,7 @@ public class PrincipalApp {
                                 alumnos[i][auxVar] = String.valueOf(0);
                             }
                             auxVar++;
-                        } while (!tieneCero && auxVar < alumnos.length);
+                        } while (!tieneCero && auxVar < alumnos[0].length);
                     }
                     // Reset Aux Var
                     auxVar = 1;
