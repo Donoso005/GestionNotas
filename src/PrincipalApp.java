@@ -93,7 +93,8 @@ public class PrincipalApp {
 
         return option;
     }
-
+ 
+    //Imprime todos los alumnos con sus respuestas
     public static void getAlumnos(String[][] alumnos) {
         for (int i = 0; i < alumnos.length; i++) {
             System.out.print("[");
@@ -107,6 +108,7 @@ public class PrincipalApp {
         }
     }
 
+    //Rellena de forma manual la matriz alumnos según la cantidad de alumnos introducida anteriormente
     public static void rellenarAlumnos(String[][] alumnos) {
         String alumno, valor;
         for (int i = 0; i < alumnos.length; i++) {
@@ -122,6 +124,7 @@ public class PrincipalApp {
         System.out.println("Valores generados correctamente...");
     }
 
+    //Verifica al alumno por numero, acumula sus respuestas y muestra la nota
     public static void obtenerNota(String alumnos[][]) {
         int nota = 0, option;
 
@@ -130,8 +133,7 @@ public class PrincipalApp {
             System.out.println((i + 1) + ". " + alumnos[i][0]);
         }
         System.out.println("--------------------\n");
-
-        do {
+        do { 
             System.out.print("Selecciona un alumno para saber su nota: ");
             option = sc.nextInt();
             if (option < 1 || option > alumnos.length) {
@@ -145,6 +147,7 @@ public class PrincipalApp {
         System.out.println("Nota de " + alumnos[option][0] + ": " + nota);
     }
 
+    //Recorre todos los alumnos, suma todas las respuestas e imprime la media
     public static void obtenerMedia(String alumnos[][]) {
         int totalNotas = 0;
         for (int i = 0; i < alumnos.length; i++) {
@@ -155,6 +158,7 @@ public class PrincipalApp {
         System.out.println("Nota MEDIA de alumnos: " + totalNotas / alumnos.length);
     }
 
+    //Recorre todas las respuestas y las suma al contador si es un 0
     public static void obtenerFallos(String alumnos[][]) {
         int cont0 = 0, aux = 0;
         int fallos[] = new int[10];
@@ -179,6 +183,7 @@ public class PrincipalApp {
         System.out.print("-- Con " + aux + " ❌FALLOS❌  \n");
     }
 
+    //Recorre todas las respuestas y las suma al contador si es un 1
     public static void obtenerAciertos(String alumnos[][]) {
         int cont1 = 0, aux = 0;
         int[] aciertos = new int[10];
@@ -204,6 +209,7 @@ public class PrincipalApp {
         System.out.print("--- Con " + aux + " ✔️ACIERTOS✔️ \n");
     }
 
+    //Calcula la nota de un alumno y si es menor que el anterior la guarda
     public static void notaBaja(String alumnos[][]) {
         int fila = 0, acumulador = 0, aux = 90;
         for (int i = 0; i < alumnos.length; i++) {
@@ -220,6 +226,7 @@ public class PrincipalApp {
                 "El alumno con la nota más BAJA, un " + aux + ", es " + alumnos[fila][0]);
     }
 
+    //Calcula la nota de un alumno y si es mayor que el anterior la guarda
     public static void notaAlta(String alumnos[][]) {
         int fila = 0, acumulador = 0, aux = 0;
         for (int i = 0; i < alumnos.length; i++) {
@@ -236,6 +243,7 @@ public class PrincipalApp {
                 "El alumno con la nota más ALTA, un " + aux + ", es " + alumnos[fila][0]);
     }
 
+    //Verifica alumnos por su numero y permite modificar sus respuestas
     public static void corregirRespuestas(String alumnos[][]) {
         int option;
 
@@ -269,6 +277,7 @@ public class PrincipalApp {
 
     }
 
+    //Elimina el nombre y las respuestas de un alumno
     public static void eliminarAlumno(String alumnos[][]) {
         int option;
 
@@ -292,6 +301,7 @@ public class PrincipalApp {
         System.out.println("El alumno " + alumnos[option][0] + " ha sido ELIMINADO exitosamente");
     }
 
+    //Permite crear un nuevo alumno si hay una fila de matriz disponible
     public static void crearAlumno(String[][] alumnos) {
         boolean disponible = false;
         int fila = 0;
@@ -325,6 +335,7 @@ public class PrincipalApp {
         }
     }
 
+    //Crea el vector actividades de manera aleatoria. Pregunta si aplicar las actividades y suma o resta a la primera respuesta posible.
     public static void comprobarActividades(String[][] alumnos) {
         int[] actividades = new int[alumnos.length];
         String aplicarNota;
@@ -376,6 +387,7 @@ public class PrincipalApp {
         } while ((!aplicarNota.equalsIgnoreCase("SI") && !aplicarNota.equalsIgnoreCase("NO")));
     }
 
+    //Calcula y guarda los aprobados y suspensos en su respectivo vector y despues imprime ambos vectores
     public static void aprobadosSuspensos(String alumnos[][]) {
         int cont = 0;
         String[] aprobados, suspensos;
