@@ -8,6 +8,7 @@ public class PrincipalApp {
         String repetir = "SI";
         String[][] alumnos;
         int numAlumnos, option;
+        boolean ActividadesCheck = false;
 
         System.out.print(
                 "----- Bienvenido al programa de examenes de alumnos ------\n¿Cuántos alumnos son?:");
@@ -15,10 +16,12 @@ public class PrincipalApp {
         alumnos = new String[numAlumnos][11];
 
         rellenarAlumnos(alumnos);
-
+        
+        // Do-While Repeat consult
         do {
             if (repetir.equalsIgnoreCase("SI")) {
                 option = menu();
+                //Switch Menu
                 switch (option) {
                     case 1:
                         getAlumnos(alumnos);
@@ -54,7 +57,7 @@ public class PrincipalApp {
                         aprobadosSuspensos(alumnos);
                         break;
                     case 12:
-                        comprobarActividades(alumnos);
+                    	ActividadesCheck = comprobarActividades(alumnos, ActividadesCheck);
                 }
             } else {
                 System.out.println("[ERROR] Opción incorrecta...");
@@ -68,8 +71,9 @@ public class PrincipalApp {
 
     public static int menu() {
         int option;
-
+        // ERRROR Out of Parameters
         do {
+        	//Print Menu
             System.out.println("----- Menú Principal -----");
             System.out.println("1. Obtener todos los alumnos y notas");
             System.out.println("2. Obtener nota de un alumno");
@@ -96,6 +100,7 @@ public class PrincipalApp {
  
     //Imprime todos los alumnos con sus respuestas
     public static void getAlumnos(String[][] alumnos) {
+    	// Loop travel Table
         for (int i = 0; i < alumnos.length; i++) {
             System.out.print("[");
             for (int k = 0; k < alumnos[0].length; k++) {
@@ -111,6 +116,7 @@ public class PrincipalApp {
     //Rellena de forma manual la matriz alumnos según la cantidad de alumnos introducida anteriormente
     public static void rellenarAlumnos(String[][] alumnos) {
         String alumno, valor;
+        // POST Alumnos in table
         for (int i = 0; i < alumnos.length; i++) {
             System.out.print("Introduzca el nombre del " + (i + 1) + "º alumno:");
             alumno = sc.next();
@@ -128,12 +134,19 @@ public class PrincipalApp {
     public static void obtenerNota(String alumnos[][]) {
         int nota = 0, option;
 
+        // GET Alumnos Available
         System.out.println("--------------------");
         for (int i = 0; i < alumnos.length; i++) {
             System.out.println((i + 1) + ". " + alumnos[i][0]);
         }
         System.out.println("--------------------\n");
+<<<<<<< Updated upstream
         do { 
+=======
+        
+        // Select Alumno
+        do {
+>>>>>>> Stashed changes
             System.out.print("Selecciona un alumno para saber su nota: ");
             option = sc.nextInt();
             if (option < 1 || option > alumnos.length) {
@@ -141,6 +154,8 @@ public class PrincipalApp {
             }
         } while (option < 1 || option > alumnos.length);
         option--;
+        
+        // Get Mark total
         for (int j = 1; j < alumnos[0].length; j++) {
             nota = nota + Integer.parseInt(alumnos[option][j]);
         }
@@ -150,6 +165,7 @@ public class PrincipalApp {
     //Recorre todos los alumnos, suma todas las respuestas e imprime la media
     public static void obtenerMedia(String alumnos[][]) {
         int totalNotas = 0;
+        // GET Marks and Make Average
         for (int i = 0; i < alumnos.length; i++) {
             for (int j = 1; j < alumnos[0].length; j++) {
                 totalNotas = totalNotas + Integer.parseInt(alumnos[i][j]);
@@ -335,21 +351,33 @@ public class PrincipalApp {
         }
     }
 
+<<<<<<< Updated upstream
     //Crea el vector actividades de manera aleatoria. Pregunta si aplicar las actividades y suma o resta a la primera respuesta posible.
     public static void comprobarActividades(String[][] alumnos) {
+=======
+    public static boolean comprobarActividades(String[][] alumnos, boolean actividadesCheck) {
+>>>>>>> Stashed changes
         int[] actividades = new int[alumnos.length];
         String aplicarNota;
         int auxVar = 1;
         boolean tieneCero = false;
+        
+        if(actividadesCheck) {
+        	System.out.println("[ERROR] Ya ha aplicado las penalizaciónes/bonificaciones anteriormente");
+        	return true;
+        }
+        
+        // Generate Actividades
         for (int i = 0; i < actividades.length; i++) {
             actividades[i] = (int) (0 + Math.random() * 2);
         }
-
+        // Check Actividades
         System.out.println("Estos son los alumnos que han hecho las actividades: ");
         for (int i = 0; i < alumnos.length; i++) {
             System.out.println((i + 1) + ". " + alumnos[i][0] + ": " + (actividades[i] == 1));
         }
-
+        
+        // Aplly the Punishment and Bonification
         do {
             System.out.println("Actividades hechas = +1 punto");
             System.out.println("Actividades no hechas = -1 punto");
@@ -357,23 +385,30 @@ public class PrincipalApp {
             aplicarNota = sc.next();
             if (aplicarNota.equalsIgnoreCase("SI")) {
                 for (int i = 0; i < alumnos.length; i++) {
+                	// IF do Actividades
                     if (actividades[i] == 1) {
                         do {
+                        	// Check every column if 0
                             if (Integer.parseInt(alumnos[i][auxVar]) == 0) {
                                 tieneCero = true;
+                                // Replace 0 to 1
                                 alumnos[i][auxVar] = String.valueOf(1);
                             }
                             auxVar++;
                         } while (!tieneCero && auxVar < alumnos.length);
+                    // ELSE
                     } else {
                         do {
+                        	// Check every column if 0
                             if (Integer.parseInt(alumnos[i][auxVar]) == 1) {
                                 tieneCero = true;
+                                // Replace 1 to 0
                                 alumnos[i][auxVar] = String.valueOf(0);
                             }
                             auxVar++;
                         } while (!tieneCero && auxVar < alumnos.length);
                     }
+                    // Reset Aux Var
                     auxVar = 1;
                     tieneCero = false;
                 }
@@ -385,6 +420,8 @@ public class PrincipalApp {
             }
             System.out.println("\n");
         } while ((!aplicarNota.equalsIgnoreCase("SI") && !aplicarNota.equalsIgnoreCase("NO")));
+        
+        return true;
     }
 
     //Calcula y guarda los aprobados y suspensos en su respectivo vector y despues imprime ambos vectores
