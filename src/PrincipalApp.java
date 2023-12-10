@@ -408,6 +408,7 @@ public class PrincipalApp {
                 }
                 System.out.println(
                         "[EXITO] Se han aplicado las penalizaciones y bonificaciones de las actividades correctamente.");
+                actividadesCheck = true;
             }
             if ((!aplicarNota.equalsIgnoreCase("SI") && !aplicarNota.equalsIgnoreCase("NO"))) {
                 System.out.println("[ERROR] Opción incorrecta...");
@@ -415,7 +416,7 @@ public class PrincipalApp {
             System.out.println("\n");
         } while ((!aplicarNota.equalsIgnoreCase("SI") && !aplicarNota.equalsIgnoreCase("NO")));
         
-        return true;
+        return actividadesCheck;
     }
 
     //Calcula y guarda los aprobados y suspensos en su respectivo vector y despues imprime ambos vectores
