@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class PrincipalApp {
+public class MainApp {
 
     static Scanner sc = new Scanner(System.in);
 
